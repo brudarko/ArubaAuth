@@ -1,169 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<title>Inova Hotspot</title>
+	<style>
+	body {
+		font-size: 1.5em;
+ 	font-family: Arial, sans-serif; 
+	}
+	.form-item{
+		padding: 10px;
+	}
 
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta charset="utf-8">
-  <title>Inova Hotspot</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
+	.msg-erro{ 
+		padding-left: 200px;
+		padding-top: 5px;
+		color: red; 
+		font-size: 0.8em;
+		font-style: italic;
+		display: none;
+		font-family: Arial, sans-serif;
+	}
 
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+	.label-alinhado{
+		display: inline-block;
+		width: 200px;
+		text-align: right;
+	}
 
-  <!-- FONT
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	input[type="text"], input[type="email"], input[type="password"], select, textarea {
+		border: 1px solid #5995DA;
+		padding: 3px;
+	}
 
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="stylesheet" href="normalize.css">
-  <link rel="stylesheet" href="skeleton.css">
-
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link rel="icon" type="image/png" href="favicon.png">
-
-<!-- Custom error box -->
-
-<style>
-#errorbox{
-  font-weight:bold;
-  color:#000000;
-  background-color:red;
-  vertical-align: center;
-  border-radius:2px;
-  width: 70%;
-  margin-left:auto;
-  margin-right:auto;
-}
-
-body {
-    width: 100%;
-    height: 100%;
-    font-family: Helvetica,Arial,sans-serif;
-    color: #000000;
-    background-color: #ffffff;
-}
-
-.form-control {
-    display: block;
-    width: 100%;
-    height: 44px;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857143;
-    color: #555;
-    background-color: #000000;
-    background-image: none;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.btn {
-    /* text-transform: uppercase; */
-    font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
-    font-weight: 400;
-    -webkit-transition: all .3s ease-in-out;
-    -moz-transition: all .3s ease-in-out;
-    transition: all .3s ease-in-out;
-}
-
-.btn-default {
-    border: 1px solid #EF8A17;
-    color: #fff;
-    background-color: #000000;
-    font-size:1.5em;
-}
-
-.btn-default:hover,
-.btn-default:focus {
-    border: 1px solid #16ef9c;
-    outline: 0;
-    color: #000000;
-    background-color: #16ef9c;
-}
-
-.btn {
-    display: inline-block;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 14px;
-    font-weight: normal;
-    line-height: 1.42857143;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    -ms-touch-action: manipulation;
-    touch-action: manipulation;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-image: none;
-    border: 1px solid transparent;
-    border-radius: 4px;
-  background-color: #000000;
-
-.btn-default {
-    border: 1px solid #ECAF28;
-    color: #ffffff;
-    background-color: #000000;
-    font-size: 1.5em;
-}
-
-@media(max-width:767px) {
-    .logo {width:100px;}
-}
-
-@media(max-width:467px) {
-    .logo {width:10px;}
-}
-
-@media(max-width:319px) {
-    .logo {width:10px;}
-}
-
-.header-logo {
-margin-left: 10px !important;
-}
-
-</style>
-    
+	input[type="submit"]{
+		background-color: #5995DA;
+		color: white;
+		padding: 3px 20px;
+		border: none;
+	}
+	input[type="submit"]:hover{
+		box-shadow: 2px 2px 2px #000;
+		cursor: pointer;
+	}
+	
+	</style>	
 </head>
 <body>
+		<h2>Cadastre-se</h2>
+			<div>
+				<form action="" method="post" id="form-contato" onsubmit="return validaForm()">
+				    <div class="form-item">
+				      <label for="nome" class="label-alinhado">Nome:</label>
+				      <input type="text" id="nome" name="nome" size="40">
+				      <span class="msg-erro" id="msg-nome"></span>
+				    </div>
+				    <div class="form-item">
+				      <label for="email" class="label-alinhado">E-mail:</label>
+				      <input type="email" id="email" name="email" size="50">
+				      <span class="msg-erro" id="msg-email"></span>
+				    </div>					    
+				    <div class="form-item">
+				      <label class="label-alinhado"></label>
+				      <label><input type="checkbox" id="concordo" name="concordo"> Li e estou de acordo com os termos de uso do site</label>
+				      <span class="msg-erro" id="msg-concordo"></span>
+				    </div>				    
+				    <div class="form-item">
+				    	<label class="label-alinhado"></label>
+				    	<form method="POST" action="https://securelogin.arubanetworks.com/swarm.cgi">
+                        <input type="hidden" name="cmd" value="authenticate" />
+                        <input type="hidden" name="user" id="user" value="test" />
+                        <input type="hidden" name="password" id="password" value="test" />
+                        <button type="submit" value="Login" class="btn btn-default" >Login</button>
+                     </form>
+				    </div>
+				</form>
+			</div>			
 
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
- 
-  <div class="container">
-    <div class="row">
-      <div class="eight columns" style="margin-top: 8%">
-    <img src="logo.png" style="margin-right:20px;">
-           <h1 style="margin-left:30px;"></h1>
-<form method="POST" action="https://securelogin.arubanetworks.com/swarm.cgi">
- <input type="hidden" name="cmd" value="authenticate" />
- <input type="hidden" name="user" id="user" value="test" />
- <input type="hidden" name="password" id="password" value="test" />
-<button type="submit" value="Login" class="btn btn-default" style = "width: 150px; margin-left:30px;font-size: 1.75em;">Login</button>
-</form>
-  
-      </div>
-    </div>
-  </div>
+	<script>
+	function validaForm(){
+	var contErros = 0;
+	//validando o campo nome 
+	var nome = document.getElementById("nome");
+	var erroNome = document.getElementById("msg-nome");
 
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	//deixou vazio ou não possui espaço na string
+	if (nome.value == "" || nome.value.indexOf(" ") == -1){
+		erroNome.innerHTML ="Digite o nome completo!";
+		erroNome.style.display = "block";
+		contErros ++;
+	}
+	else {
+		erroNome.style.display = "none";
+	}
+
+	//campo estou de acordo 
+
+	var concordo = document.getElementById("concordo");
+	var erroConcordo = document.getElementById ("msg-concordo");
+	if (!concordo.checked){
+		erroConcordo.innerHTML ="Você precisa concordar com os termos de uso do site!";
+		erroConcordo.style.display = "block";
+		contErros ++;
+	}
+	else {
+		erroConcordo.style.display = "none";
+	}
+
+
+	//outras verificações 
+	
+
+	if (contErros> 0){
+		return false;
+	}
+	else{
+		alert ("Cadastro realizado com sucesso!");
+	}
+
+}	
+	</script>
 </body>
 </html>
