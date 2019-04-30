@@ -1,4 +1,6 @@
 # ArubaAuth
 Captive Portal para ArubaOS
 
-Em desenvolvimento.
+Autenticação com um usuário pré-definido dentro do ArubaOS.
+
+
